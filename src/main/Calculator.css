@@ -1,0 +1,15 @@
+/*
+Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
+Calculator.css (c) 2022
+Desc: Css file for component Calculator
+Created:  2022-04-27T17:57:12.851Z
+Modified: 2022-04-27T18:02:07.343Z
+*/
+
+.calculator {
+  height: 320px;
+  width: 235px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: red;
+}
