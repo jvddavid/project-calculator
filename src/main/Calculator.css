@@ -3,7 +3,7 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Calculator.css (c) 2022
 Desc: Css file for component Calculator
 Created:  2022-04-27T17:57:12.851Z
-Modified: 2022-04-28T00:57:30.778Z
+Modified: 2022-04-28T01:05:38.206Z
 */
 
 .calculator {
@@ -11,5 +11,8 @@ Modified: 2022-04-28T00:57:30.778Z
   width: 235px;
   border-radius: 5px;
   overflow: hidden;
-  background-color: red; /* TODO alter background color */
+
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: 1fr repeat(5, 48px);
 }

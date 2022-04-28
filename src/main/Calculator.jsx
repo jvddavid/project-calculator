@@ -3,7 +3,7 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Calculator.jsx (c) 2022
 Desc: file to create the calculator component
 Created:  2022-04-27T17:57:20.042Z
-Modified: 2022-04-28T00:58:30.251Z
+Modified: 2022-04-28T01:05:01.308Z
 */
 
 import React, { Component } from "react";
@@ -11,11 +11,13 @@ import React, { Component } from "react";
 import "./Calculator.css";
 
 import Button from "../components/Button";
+import Display from "../components/Display";
 
 export default class Calculator extends Component {
   render() {
     return (
       <div className="calculator">
+        <Display value={100} />
         <Button label="AC" />
         <Button label="/" />
         <Button label="7" />

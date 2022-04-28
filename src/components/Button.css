@@ -3,10 +3,11 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Button.css (c) 2022
 Desc: css for Button component
 Created:  2022-04-28T00:44:07.717Z
-Modified: 2022-04-28T00:56:23.555Z
+Modified: 2022-04-28T01:01:26.680Z
 */
 :root {
   --bg-button: #f0f0f0;
+  --bg-button-hover: #a0a0a0;
   --border-button: solid 1px #888;
 }
 
@@ -20,5 +21,5 @@ Modified: 2022-04-28T00:56:23.555Z
 }
 
 .button:hover {
-
+  background-color: var(--bg-button-hover);
 }
