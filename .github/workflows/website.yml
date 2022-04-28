@@ -22,7 +22,8 @@ jobs:
         npm install
         npm run build
         
-    - uses: crazy-max/ghaction-github-pages@v2.1.3
+    - name: Deploy Github Page
+      uses: crazy-max/ghaction-github-pages@v2.1.3
       with:
         target_branch: output
         build_dir: build
