@@ -1,0 +1,24 @@
+/*
+Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
+Button.css (c) 2022
+Desc: css for Button component
+Created:  2022-04-28T00:44:07.717Z
+Modified: 2022-04-28T00:56:23.555Z
+*/
+:root {
+  --bg-button: #f0f0f0;
+  --border-button: solid 1px #888;
+}
+
+.button {
+  font-size: 1.4em;
+  background-color: var(--bg-button);
+  border: none;
+  border-right: var(--border-button);
+  border-bottom: var(--border-button);
+  outline: none;
+}
+
+.button:hover {
+
+}
