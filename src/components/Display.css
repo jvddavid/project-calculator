@@ -3,10 +3,11 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Display.css (c) 2022
 Desc: css for Display component
 Created:  2022-04-28T01:02:42.680Z
-Modified: 2022-04-28T01:46:22.588Z
+Modified: 2022-04-28T03:19:28.722Z
 */
 
 .display {
+  max-height: 100%;
   max-width: calc(4 * 25%);
   grid-column: span 4;
   background-color: #0009;
@@ -18,5 +19,6 @@ Modified: 2022-04-28T01:46:22.588Z
 }
 
 .display span {
+  overflow-y: hidden;
   overflow-x: auto;
 }
