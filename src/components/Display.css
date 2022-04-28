@@ -3,7 +3,7 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Display.css (c) 2022
 Desc: css for Display component
 Created:  2022-04-28T01:02:42.680Z
-Modified: 2022-04-28T03:19:28.722Z
+Modified: 2022-04-28T14:35:29.117Z
 */
 
 .display {
@@ -19,6 +19,8 @@ Modified: 2022-04-28T03:19:28.722Z
 }
 
 .display span {
-  overflow-y: hidden;
+  display: inline;
+  max-height: 2em;
+  overflow-y: auto;
   overflow-x: auto;
 }

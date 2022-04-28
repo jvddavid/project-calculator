@@ -3,7 +3,7 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Calculator.jsx (c) 2022
 Desc: file to create the calculator component
 Created:  2022-04-27T17:57:20.042Z
-Modified: 2022-04-28T03:33:16.949Z
+Modified: 2022-04-28T14:57:51.431Z
 */
 
 import React, { Component } from "react";
@@ -42,8 +42,11 @@ export default class Calculator extends Component {
           return;
         }
         while (true) {
-          const match = newDisplayValue.match(/([0-9.]*)[*,/,+,-]([0-9.]*)/);
+          const match = newDisplayValue.match(
+            /^([0-9.-]*)[*,/,+,-]([0-9.-]*)/m
+          );
           if (match === null) break;
+          if (match[1] === "") break;
           const n1 = Number(match[1]);
           const n2 = Number(match[2]);
           let n3 = 0;
@@ -64,9 +67,16 @@ export default class Calculator extends Component {
             default:
               break;
           }
-          newDisplayValue = newDisplayValue.replace(match[0], n3.toString());
+          console.log(newDisplayValue);
+          newDisplayValue = newDisplayValue.replace(
+            /^([0-9.-]*)[*,/,+,-]([0-9.-]*)/m,
+            n3.toString()
+          );
         }
-        if (newDisplayValue.includes("NaN")) {
+        if (
+          newDisplayValue.includes("NaN") ||
+          newDisplayValue.includes("Infinity")
+        ) {
           return this.clearMemory();
         }
         this.setState({
@@ -90,9 +100,12 @@ export default class Calculator extends Component {
   addDigit(n) {
     let newDisplayValue = this.state.displayValue;
     let lastNumber = this.state.displayValue;
-    const match = lastNumber.match(/[*,/,+,-]([0-9.]*)/);
+    const match = lastNumber.match(/[*,/,+,-]([0-9.-]*)/);
     if (match !== null) {
       lastNumber = match[1];
+      if (match[0].includes("-")) {
+        lastNumber = "-" + lastNumber;
+      }
     }
     if (lastNumber === "0" && n === "0") {
       return;
@@ -102,15 +115,16 @@ export default class Calculator extends Component {
     if (newDisplayValue === "0") {
       newDisplayValue = "";
     }
-    if (newDisplayValue.includes("NaN")) {
+    if (
+      newDisplayValue.includes("NaN") ||
+      newDisplayValue.includes("Infinity")
+    ) {
       return this.clearMemory();
     }
-    console.log(lastNumber);
     if (n === "." && lastNumber.includes(".")) {
       return;
     }
     this.setState({ ...this.state, displayValue: newDisplayValue + n });
-    console.log(n);
   }
 
   render() {
