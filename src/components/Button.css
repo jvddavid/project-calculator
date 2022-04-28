@@ -3,11 +3,15 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Button.css (c) 2022
 Desc: css for Button component
 Created:  2022-04-28T00:44:07.717Z
-Modified: 2022-04-28T01:16:25.039Z
+Modified: 2022-04-28T01:31:59.235Z
 */
 :root {
   --bg-button: #f0f0f0;
   --bg-button-hover: #a0a0a0;
+  --bg-button-click: #ccc;
+  --bg-button-operation: #fa8231;
+  --bg-button-operation-hover: #d6671c;
+  --bg-button-operation-active: #fa8231cc;
   --border-button: solid 1px #888;
 }
 
@@ -22,4 +26,29 @@ Modified: 2022-04-28T01:16:25.039Z
 
 .button:hover {
   background-color: var(--bg-button-hover);
+}
+
+.button:active {
+  background-color: var(--bg-button-click);
+}
+
+.button.double {
+  grid-column: span 2;
+}
+
+.button.triple {
+  grid-column: span 3;
+}
+
+.button.operation {
+  background-color: var(--bg-button-operation);
+  color: #fff;
+}
+
+.button.operation:hover {
+  background-color: var(--bg-button-operation-hover);
+}
+
+.button.operation:active {
+  background-color: var(--bg-button-operation-active);
 }
