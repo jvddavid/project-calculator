@@ -1,0 +1,17 @@
+/*
+Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
+Calculator.css (c) 2022
+Desc: Css file for component Calculator
+Created:  2022-04-27T17:57:12.851Z
+Modified: 2022-04-28T03:41:17.851Z
+*/
+
+.calculator {
+  height: 100%;
+  max-width: 220px;
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: 1fr repeat(5, 15%);
+}
