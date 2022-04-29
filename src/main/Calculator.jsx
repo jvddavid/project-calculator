@@ -3,7 +3,7 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Calculator.jsx (c) 2022
 Desc: file to create the calculator component
 Created:  2022-04-27T17:57:20.042Z
-Modified: 2022-04-28T14:57:51.431Z
+Modified: 2022-04-28T16:11:00.680Z
 */
 
 import React, { Component } from "react";
@@ -32,18 +32,19 @@ export default class Calculator extends Component {
 
   setOperation(operation) {
     let newDisplayValue = this.state.displayValue;
-    const match = newDisplayValue.match(/(.*)[*,/,+,-]$/);
-    if (match !== null) {
+    let match = newDisplayValue.match(/(.*)[*,/,+,-]$/);
+    while (match !== null) {
       newDisplayValue = match[1];
+      match = newDisplayValue.match(/(.*)[*,/,+,-]$/);
     }
     switch (operation) {
       case "=":
         if (this.state.operation === null || this.state.operation === "=") {
-          return;
+          break;
         }
         while (true) {
           const match = newDisplayValue.match(
-            /^([0-9.-]*)[*,/,+,-]([0-9.-]*)/m
+            /^([-]?[0-9.]*)[*,/,+,-]([-]?[0-9.]*)/m
           );
           if (match === null) break;
           if (match[1] === "") break;
@@ -69,7 +70,7 @@ export default class Calculator extends Component {
           }
           console.log(newDisplayValue);
           newDisplayValue = newDisplayValue.replace(
-            /^([0-9.-]*)[*,/,+,-]([0-9.-]*)/m,
+            /^([-]?[0-9.]*)[*,/,+,-]([-]?[0-9.]*)/m,
             n3.toString()
           );
         }
@@ -77,7 +78,8 @@ export default class Calculator extends Component {
           newDisplayValue.includes("NaN") ||
           newDisplayValue.includes("Infinity")
         ) {
-          return this.clearMemory();
+          this.clearMemory();
+          break;
         }
         this.setState({
           ...this.state,
@@ -85,16 +87,31 @@ export default class Calculator extends Component {
           // eslint-disable-next-line no-eval
           displayValue: newDisplayValue,
         });
-        return;
+        break;
+      case "-":
+        if (this.state.operation !== "-") {
+          this.setState({
+            ...this.state,
+            operation: operation,
+            displayValue:
+              newDisplayValue + (this.state.operation || "") + operation,
+          });
+          break;
+        }
+        this.setState({
+          ...this.state,
+          operation: operation,
+          displayValue: newDisplayValue + operation,
+        });
+        break;
       default:
+        this.setState({
+          ...this.state,
+          operation: operation,
+          displayValue: newDisplayValue + operation,
+        });
         break;
     }
-
-    this.setState({
-      ...this.state,
-      operation: operation,
-      displayValue: newDisplayValue + operation,
-    });
   }
 
   addDigit(n) {
