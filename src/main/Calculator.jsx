@@ -3,7 +3,7 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 Calculator.jsx (c) 2022
 Desc: file to create the calculator component
 Created:  2022-04-27T17:57:20.042Z
-Modified: 2022-04-28T16:11:00.680Z
+Modified: 2022-04-29T01:17:40.579Z
 */
 
 import React, { Component } from "react";
@@ -19,7 +19,7 @@ export default class Calculator extends Component {
 
     this.stateInitialValue = {
       displayValue: "0",
-      operation: null,
+      lastDigit: null,
     };
     this.state = {
       ...this.stateInitialValue,
@@ -39,7 +39,7 @@ export default class Calculator extends Component {
     }
     switch (operation) {
       case "=":
-        if (this.state.operation === null || this.state.operation === "=") {
+        if (this.state.lastDigit === null || this.state.lastDigit === "=") {
           break;
         }
         while (true) {
@@ -83,31 +83,33 @@ export default class Calculator extends Component {
         }
         this.setState({
           ...this.state,
-          operation: operation,
-          // eslint-disable-next-line no-eval
+          lastDigit: operation,
           displayValue: newDisplayValue,
         });
         break;
       case "-":
-        if (this.state.operation !== "-") {
+        if (
+          this.state.lastDigit !== "-" &&
+          "*/+".includes(this.state.lastDigit)
+        ) {
           this.setState({
             ...this.state,
-            operation: operation,
+            lastDigit: operation,
             displayValue:
-              newDisplayValue + (this.state.operation || "") + operation,
+              newDisplayValue + (this.state.lastDigit || "") + operation,
           });
           break;
         }
         this.setState({
           ...this.state,
-          operation: operation,
+          lastDigit: operation,
           displayValue: newDisplayValue + operation,
         });
         break;
       default:
         this.setState({
           ...this.state,
-          operation: operation,
+          lastDigit: operation,
           displayValue: newDisplayValue + operation,
         });
         break;
@@ -141,7 +143,11 @@ export default class Calculator extends Component {
     if (n === "." && lastNumber.includes(".")) {
       return;
     }
-    this.setState({ ...this.state, displayValue: newDisplayValue + n });
+    this.setState({
+      ...this.state,
+      lastDigit: n,
+      displayValue: newDisplayValue + n,
+    });
   }
 
   render() {
