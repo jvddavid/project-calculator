@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "https://jvddavid.github.io/project-calculator/static/css/main.03cade19.css",
+    "main.js": "https://jvddavid.github.io/project-calculator/static/js/main.a930fdc3.js",
+    "static/js/787.526bc8b7.chunk.js": "https://jvddavid.github.io/project-calculator/static/js/787.526bc8b7.chunk.js",
+    "static/media/RobotoMono-Thin.ttf": "https://jvddavid.github.io/project-calculator/static/media/RobotoMono-Thin.30914900129fa3d2d85b.ttf",
+    "index.html": "https://jvddavid.github.io/project-calculator/index.html",
+    "main.03cade19.css.map": "https://jvddavid.github.io/project-calculator/static/css/main.03cade19.css.map",
+    "main.a930fdc3.js.map": "https://jvddavid.github.io/project-calculator/static/js/main.a930fdc3.js.map",
+    "787.526bc8b7.chunk.js.map": "https://jvddavid.github.io/project-calculator/static/js/787.526bc8b7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.03cade19.css",
+    "static/js/main.a930fdc3.js"
+  ]
+}
